@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel administrativo</title>
+    <link rel="stylesheet" href="visual/estilos.css">
+    <style>
+        .recipiente {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+    
+        .item1 {
+            width: calc(50% - 20px); /* Ajusta según sea necesario, el 20px es para el margen */
+            margin: 10px; /* Ajusta según sea necesario */
+            box-sizing: border-box;
+        }
+    
+        h2 {
+            width: 100%;
+            background: var(--blue);
+            color: var(--white);
+            margin: 0; /* Elimina el margen predeterminado del h2 */
+            padding: 15px; /* Ajusta según sea necesario */
+            box-sizing: border-box;
+        }
+    
+        p {
+            width: 100%;
+            /* Estilos para el párrafo, ajusta según sea necesario */
+            background: var(--gray); /* Color diferente para el párrafo */
+            color: var(--black); /* Color diferente para el texto del párrafo */
+            margin: 10px 0;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    
+        @media screen and (max-width: 1320px) {
+            .item1 {
+                width: 100%;
+            }
+            .recipiente {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        table {
+            margin-top: 30px;
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        @media screen and (max-width: 1320px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            th {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+                margin-bottom: 15px;
+            }
+
+            td {
+                border: none;
+                border-bottom: 1px solid #ddd;
+                position: relative;
+                padding-left: 50%;
+            }
+
+            td:before {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                content: attr(data-label);
+            }
+        }
+        td.separator {
+            border: none;
+            border-bottom: 2px solid #5f5f5f;
+            height: 1px;
+            padding: 0;
+        }
+        ol{
+            margin-bottom: 15px;
+        }
+        .li1{
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        justify-content: space-between;
+        font-size: 2rem;
+        color: rgb(109, 109, 109);
+        }
+        .btn {
+        text-decoration:none;
+        border: none; 
+        color: black; 
+        padding: 14px 28px; 
+        cursor: pointer; 
+        border-radius: 5px; 
+        }
+        .primary {background-color: white; border: 2px solid #2a2185;} 
+        .primary:hover {background: #2a2185; color: white;}
+        .xl{width: 90%;display: flex;justify-content: center;margin-top: 10px;}
+        .alerta{
+            padding: 15px;
+            background-color: rgba(83, 48, 211, 0.5);
+            color: white;
+            margin: 15px;
+            border-radius: 5px;
+            position: relative;
+            border-radius: 20px;
+            
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="navegacion">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="stats-chart-outline"></ion-icon>
+                            </span>
+                            <span class="titulo">Resumen</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="people-outline"></ion-icon>
+                            </span>
+                            <span class="titulo">Clientes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="pricetag-outline"></ion-icon>
+                            </span>
+                            <span class="titulo">Productos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="calendar-number-outline"></ion-icon>
+                            </span>
+                            <span class="titulo">Eventos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="storefront-outline"></ion-icon>
+                            </span>
+                            <span class="titulo">Marcas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="mail-outline"></ion-icon>
+                            </span>
+                            <span class="titulo">Mensajes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="exit-outline"></ion-icon>
+                            </span>
+                            <span class="titulo">Cerrar Sesion</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+        <div class="main">
+            <div class="topbar">
+                <div class="ocultar">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div> 
+                <div class="perfil">
+                    <ion-icon name="person-outline"></ion-icon>
+                    <p>Nombre del Admin</p>
+                </div>
+            </div>
+
+            <div style="width: 100%;display: flex;justify-content: center;margin-top: 0;background:var(--blue);color: var(--white);margin-bottom: 15px;">
+                <h2>Productos mas Recientes</h2>
+            </div>
+            
+            <div class="cardbox">
+                <div class="card">
+                    <div>
+                        <div class="nombre">aaaa</div>
+                        <div class="precio">$aaaa</div>
+                    </div>
+                    <div class="iconbox">
+                        <ion-icon name="shirt-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex;justify-content: center;">
+                <a href="#" class="btn primary xl">Gestionar</a>
+            </div>
+
+            
+
+            <div class="recipiente">
+                <div class="item1">
+                    <h2>Clientes mas recientes</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Clave</th>
+                                <th>Contacto</th>
+                                <th>Marca</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="Nombre">Juan Pérez</td>
+                                <td data-label="Email">juan@example.com</td>
+                                <td data-label="Clave">********</td>
+                                <td data-label="Contacto">123-456-7890</td>
+                                <td data-label="Marca">ABC Co.</td>
+                                <td class="separator" colspan="5"></td>
+                            </tr>
+                            <tr>
+                                <td data-label="Nombre">Juan Pérez</td>
+                                <td data-label="Email">juan@example.com</td>
+                                <td data-label="Clave">********</td>
+                                <td data-label="Contacto">123-456-7890</td>
+                                <td data-label="Marca">ABC Co.</td>
+                                <td class="separator" colspan="5"></td>
+                            </tr>
+                            <tr>
+                                <td data-label="Nombre">Juan Pérez</td>
+                                <td data-label="Email">juan@example.com</td>
+                                <td data-label="Clave">********</td>
+                                <td data-label="Contacto">123-456-7890</td>
+                                <td data-label="Marca">ABC Co.</td>
+                                <td class="separator" colspan="5"></td>
+                            </tr>
+                            <!-- Agrega más filas según sea necesario -->
+                        </tbody>
+                    </table>
+                    <div style="display: flex;justify-content: center;">
+                        <a href="#" class="btn primary">Gestionar</a>
+                    </div>
+                </div>
+                
+                <div class="item1">
+                    <h2>Marcas mas populares</h2>
+                    <div style="display: flex;flex-direction: column;">
+                        <div class="alerta">Marca 1: 180 votos</div>
+                        <div class="alerta">Marca 1: 180 votos</div>
+                        <div class="alerta">Marca 1: 180 votos</div>
+                    </div>
+                    <div style="display: flex;justify-content: center;">
+                        <a href="#" class="btn primary">Gestionar</a>
+                    </div>
+                </div>
+            </div>
+            <h2>Mensajes pendientes</h2>
+            <div style="margin: 15px;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Fecha</th>
+                        <th>Mensaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Nombre">Juan Pérez</td>
+                        <td data-label="Email">juan@example.com</td>
+                        <td data-label="fecha">27-12-2023</td>
+                        <td data-label="Contacto">este es un mensaje de ejemplo.</td>
+                        <td class="separator" colspan="5"></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Nombre">Juan Pérez</td>
+                        <td data-label="Email">juan@example.com</td>
+                        <td data-label="fecha">27-12-2023</td>
+                        <td data-label="Contacto">este es un mensaje de ejemplo.</td>
+                        <td class="separator" colspan="5"></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Nombre">Juan Pérez</td>
+                        <td data-label="Email">juan@example.com</td>
+                        <td data-label="fecha">27-12-2023</td>
+                        <td data-label="Contacto">este es un mensaje de ejemplo.</td>
+                        <td class="separator" colspan="5"></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <div style="display: flex;justify-content: center;">
+                <a href="#" class="btn primary">Mas Informacion</a>
+            </div>
+            </div>
+        </div>
+
+    </main>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="visual/main.js"></script>
+</body>
+</html>
